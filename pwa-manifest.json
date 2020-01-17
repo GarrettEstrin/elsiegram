@@ -1,0 +1,23 @@
+{
+    "name": "ElsieGram",
+    "short_name": "ElsieGram",
+    "description": "",
+    "icons": [
+        {
+            "src": "https:\/\/elsiegram.com\/wp-content\/uploads\/2020\/01\/logo.png",
+            "sizes": "192x192",
+            "type": "image\/png"
+        },
+        {
+            "src": "https:\/\/elsiegram.com\/wp-content\/uploads\/2020\/01\/logosplash.png",
+            "sizes": "512x512",
+            "type": "image\/png"
+        }
+    ],
+    "background_color": "#D5E0EB",
+    "theme_color": "#D5E0EB",
+    "display": "standalone",
+    "orientation": "portrait",
+    "start_url": "https:\/\/elsiegram.com\/",
+    "scope": "https:\/\/elsiegram.com\/"
+}
