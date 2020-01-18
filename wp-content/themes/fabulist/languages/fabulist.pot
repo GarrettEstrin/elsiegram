@@ -390,7 +390,7 @@ msgid "Please define an SVG icon filename."
 msgstr ""
 
 #: inc/template-functions.php:410
-msgid "Add a menu"
+msgid ""
 msgstr ""
 
 #: inc/template-hooks/slider.php:102

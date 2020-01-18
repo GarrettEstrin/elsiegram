@@ -33,14 +33,14 @@ if ( ! function_exists( 'fabulist_posted_on' ) ) :
 			echo '<span class="posted-on">' . $posted_on . '</span>'; // WPCS: XSS OK.
 		endif;
 
-		if ( fabulist_meta_option( 'show_author', 'show_single_author' ) ) :
-			$byline = sprintf(
-				/* translators: %s: post author. */
-				esc_html_x( ' by %s', 'post author', 'fabulist' ),
-				'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
-			);
-			echo '<span class="byline"> ' . $byline . '</span>';
-		endif;
+		// if ( fabulist_meta_option( 'show_author', 'show_single_author' ) ) :
+		// 	$byline = sprintf(
+		// 		/* translators: %s: post author. */
+		// 		esc_html_x( ' by %s', 'post author', 'fabulist' ),
+		// 		'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
+		// 	);
+		// 	echo '<span class="byline"> ' . $byline . '</span>';
+		// endif;
 	}
 endif;
 

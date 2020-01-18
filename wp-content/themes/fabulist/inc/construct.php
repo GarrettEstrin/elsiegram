@@ -144,7 +144,7 @@ if ( ! function_exists( 'fabulist_primary_nav' ) ) :
 	 * @since Fabulist 1.0.0
 	 */
 	function fabulist_primary_nav() { ?>
-		<nav id="site-navigation" class="main-navigation">
+		<!-- <nav id="site-navigation" class="main-navigation">
 			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
                 <span class="screen-reader-text"><?php esc_html_e( 'Menu', 'fabulist' ); ?></span>
                 <svg viewBox="0 0 40 40" class="icon-menu">
@@ -165,7 +165,8 @@ if ( ! function_exists( 'fabulist_primary_nav' ) ) :
         			'fallback_cb' => 'fabulist_menu_fallback_cb',
 				) );
 			?>
-		</nav><!-- #site-navigation -->
+		</nav> -->
+		<!-- #site-navigation -->
 	<?php }
 endif;
 add_action( 'fabulist_primary_nav_action', 'fabulist_primary_nav', 10 );
@@ -235,7 +236,7 @@ if ( ! function_exists( 'fabulist_site_info' ) ) :
 	 * @since Fabulist 1.0.0
 	 */
 	function fabulist_site_info() { 
-		$copyright = fabulist_theme_option('copyright_text');
+		$copyright = "Copyright &copy; " . date("Y");
 		?>
 		<div class="site-info">
             <div class="wrapper">
@@ -244,10 +245,9 @@ if ( ! function_exists( 'fabulist_site_info' ) ) :
 	                	<p>
 	                    	<?php 
 	                    	echo fabulist_santize_allow_tags( $copyright ); 
-	                    	printf( esc_html__( ' Fabulist by %1$s Shark Themes %2$s', 'fabulist' ), '<a href="' . esc_url( 'http://sharkthemes.com/' ) . '" target="_blank">','</a>' );
-	                    	if ( function_exists( 'the_privacy_policy_link' ) ) {
-								the_privacy_policy_link( ' | ' );
-							}
+							printf( esc_html__( ' %1$s Garrettestrin.com %2$s', 'fabulist' ), '<a href="' . esc_url( 'http://garrettestrin.com/' ) . '" target="_blank">','</a>' );
+							echo "<br>";
+							printf( esc_html__( ' %1$s login %2$s', 'fabulist' ), '<a href="' . esc_url( '/wp-login.php' ) . '">','</a>' );
 	                    	?>
 	                    </p>
 	                </div><!-- .copyright -->

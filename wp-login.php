@@ -204,7 +204,7 @@ function login_header( $title = 'Log In', $message = '', $wp_error = null ) {
 
 	?>
 	<div id="login">
-		<h1><a href="<?php echo esc_url( $login_header_url ); ?>"><?php echo $login_header_text; ?></a></h1>
+		<h1><a href="/"><?php echo $login_header_text; ?></a></h1>
 	<?php
 	/**
 	 * Filters the message to display above the login form.
@@ -1420,6 +1420,8 @@ switch ( $action ) {
 					}
 
 					?>
+					<!-- <a class="invite-link" href="/invite"><?php _e( 'Request Invitation' ); ?></a> -->
+					<br>
 					<a href="<?php echo esc_url( wp_lostpassword_url() ); ?>"><?php _e( 'Lost your password?' ); ?></a>
 					<?php
 				}

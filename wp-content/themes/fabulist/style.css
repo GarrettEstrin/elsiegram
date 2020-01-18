@@ -3018,11 +3018,11 @@ ul.trail-items li:last-child:after {
 }
 .blog-posts-wrapper article.has-post-thumbnail .entry-container {
 	text-align: left;
-	padding: 20px 0 20px 20px;
+	padding: 0px 0 20px;
 	background: #fff;
 	width: 90%;
 	display: inline-block;
-	margin: -30px auto 0;
+	margin: 10px auto 0;
 }
 .post-categories li a,
 .cat-links,
