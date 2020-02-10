@@ -23,3 +23,5 @@ node_modules/
 *.sqlite
 
 wp-config.php
+
+wp-content/plugins/wp-super-cache/
