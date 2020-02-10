@@ -1,8 +1,8 @@
-const CACHE_VERSION = '1.7.5';
+const CACHE_VERSION = '1.7.6';
 
 const BASE_CACHE_FILES = [
-    'https://elsiegram.com/wp-content/uploads/2020/01/logo.png',
-'https://elsiegram.com/wp-content/uploads/2020/01/logosplash.png',
+    'https://elsiegram.com/wp-content/uploads/2020/01/logo-e1580103425304-1.png',
+'https://elsiegram.com/wp-content/uploads/2020/01/logosplash-1.png',
 
 ];
 

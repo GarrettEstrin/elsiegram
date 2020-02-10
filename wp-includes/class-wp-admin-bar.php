@@ -436,9 +436,9 @@ class WP_Admin_Bar {
 		} elseif ( wp_is_mobile() ) {
 			$class .= ' mobile';
 		}
-			
+
 		?>
-		<div id="wpadminbar" class="test <?php echo $class; ?>">
+		<div id="wpadminbar" class="<?php echo $class; ?>">
 			<?php if ( ! is_admin() ) { ?>
 				<a class="screen-reader-shortcut" href="#wp-toolbar" tabindex="1"><?php _e( 'Skip to toolbar' ); ?></a>
 			<?php } ?>

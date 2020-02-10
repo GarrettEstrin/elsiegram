@@ -347,3 +347,38 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 if ( class_exists( 'OCDI_Plugin' ) ) {
     require get_template_directory() . '/inc/demo-import.php';
 }
+
+
+/* Disable WordPress Admin Bar for all users but admins. */
+  show_admin_bar(false);
+  
+$currentPage = $_SERVER['REQUEST_URI'];
+
+if($currentPage != "/wp-login.php" && !is_user_logged_in()){
+        wp_redirect("/home.php");
+};
+
+/**
+ * Redirect user after successful login.
+ *
+ * @param string $redirect_to URL to redirect to.
+ * @param string $request URL the user is coming from.
+ * @param object $user Logged user's data.
+ * @return string
+ */
+function my_login_redirect( $redirect_to, $request, $user ) {
+    //is there a user to check?
+    if ( isset( $user->roles ) && is_array( $user->roles ) ) {
+        //check for admins
+        if ( in_array( 'administrator', $user->roles ) ) {
+            // redirect them to the default place
+            return $redirect_to;
+        } else {
+            return home_url();
+        }
+    } else {
+        return $redirect_to;
+    }
+}
+ 
+add_filter( 'login_redirect', 'my_login_redirect', 10, 3 );
