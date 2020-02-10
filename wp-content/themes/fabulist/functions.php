@@ -353,10 +353,10 @@ if ( class_exists( 'OCDI_Plugin' ) ) {
   show_admin_bar(false);
   
 $currentPage = $_SERVER['REQUEST_URI'];
-
-if($currentPage != "/wp-login.php" && !is_user_logged_in()){
-        wp_redirect("/home.php");
-};
+if($currentPage != "/wp-login.php" && $currentPage != "/home/" && $currentPage != "/invite/" && !is_user_logged_in()){
+		wp_redirect("/home");
+		die();
+}
 
 /**
  * Redirect user after successful login.
@@ -372,7 +372,7 @@ function my_login_redirect( $redirect_to, $request, $user ) {
         //check for admins
         if ( in_array( 'administrator', $user->roles ) ) {
             // redirect them to the default place
-            return $redirect_to;
+            return "/add-post/";
         } else {
             return home_url();
         }

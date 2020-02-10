@@ -1,5 +1,8 @@
 <?php
-
+    if(is_user_logged_in()) {
+        wp_redirect("/");
+        die();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -13,6 +16,6 @@
 <body>
     <h1>ElsieGram</h1>
     <h2><a href="/wp-login.php">LOGIN</a></h2>
-    <h2><a href="/invite.php">REQUEST INVITATION</a></h2> 
+    <h2><a href="/invite">REQUEST INVITATION</a></h2> 
 </body>
 </html>
