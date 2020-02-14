@@ -3,19 +3,12 @@
         wp_redirect("/");
         die();
     }
+    include("header.php");
+    include("header-custom.php");
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ElsieGram</title>
-</head>
-<body>
-    <h1>ElsieGram</h1>
-    <h2><a href="/wp-login.php">LOGIN</a></h2>
-    <h2><a href="/invite">REQUEST INVITATION</a></h2> 
+        <!-- <div class="container"> in header-custom.php -->
+        <p class="home__link"><a href="/wp-login.php">LOGIN</a></p>
+        <p class="home__link"><a href="/invite">REQUEST INVITATION</a></p> 
+    </div>
 </body>
 </html>

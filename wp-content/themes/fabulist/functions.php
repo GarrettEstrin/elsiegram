@@ -6,7 +6,9 @@
  *
  * @package fabulist
  */
-
+if(!defined("ASSET_URL")) {
+	define("ASSET_URL", "/wp-content/themes/fabulist/assets-custom");
+}
 if ( ! function_exists( 'fabulist_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
