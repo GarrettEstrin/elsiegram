@@ -1,0 +1,14 @@
+on: push
+name: Publish Website
+jobs:
+  FTP-Deploy-Action:
+    name: FTP-Deploy-Action
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: FTP-Deploy-Action
+      uses: SamKirkland/FTP-Deploy-Action@2.0.0
+      env:
+        FTP_SERVER: elsiegram.com
+        FTP_USERNAME: 1642636_elsie
+        FTP_PASSWORD: ${{ secrets.ELSIE_GRAM_FTP_PASSWORD }}
