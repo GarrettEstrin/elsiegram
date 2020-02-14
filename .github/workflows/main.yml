@@ -12,3 +12,4 @@ jobs:
         FTP_SERVER: elsiegram.com
         FTP_USERNAME: 1642636_elsie
         FTP_PASSWORD: ${{ secrets.ELSIE_GRAM_FTP_PASSWORD }}
+        PORT: 221
