@@ -9,6 +9,8 @@
 if(!defined("ASSET_URL")) {
 	define("ASSET_URL", "/wp-content/themes/fabulist/assets-custom");
 }
+include_once("ajax-endpoints.php");
+
 if ( ! function_exists( 'fabulist_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
@@ -392,3 +394,4 @@ function my_login_redirect( $redirect_to, $request, $user ) {
 }
  
 add_filter( 'login_redirect', 'my_login_redirect', 10, 3 );
+
