@@ -6,4 +6,3 @@
 </head>
 <body>
     <div class="container">
-        <img src="<?php echo ASSET_URL?>/img/logo.png" alt="" class="logo">
