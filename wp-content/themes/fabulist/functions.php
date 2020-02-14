@@ -353,8 +353,16 @@ if ( class_exists( 'OCDI_Plugin' ) ) {
   show_admin_bar(false);
   
 $currentPage = $_SERVER['REQUEST_URI'];
-if($currentPage != "/wp-login.php" && $currentPage != "/home/" && $currentPage != "/invite/" && !is_user_logged_in()){
-		wp_redirect("/home");
+$unauthenticatedPages = array(
+	"/wp-login.php",
+	"/home",
+	"/home/",
+	"/invite",
+	"/invite/"
+
+);
+if(!in_array($currentPage, $unauthenticatedPages) && !is_user_logged_in()){
+		wp_redirect("/home/");
 		die();
 }
 
