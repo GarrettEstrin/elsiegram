@@ -13,3 +13,4 @@ jobs:
         FTP_USERNAME: 1642636_elsie
         FTP_PASSWORD: ${{ secrets.ELSIE_GRAM_FTP_PASSWORD }}
         PORT: 221
+        ARGS: --verbose --dry-run	
