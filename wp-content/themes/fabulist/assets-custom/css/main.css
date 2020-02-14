@@ -24,7 +24,10 @@ body {
     display: block;
 }
 
-
+.input-error {
+    border: solid 2px red!important;
+    box-sizing: border-box;
+}
 
 /* home */
 .home__link {
@@ -35,4 +38,49 @@ body {
 .home__link a {
     text-decoration: none;
     color: inherit;
+}
+
+/* invite  */
+
+.invite__header {
+    font-size: 40px;
+    text-align: center;
+    margin: 0 0 60px;
+}
+
+.invite__label {
+    display: block;
+    text-align: center;
+    font-size: 30px;
+    color: #555;
+}
+
+input.invite__input {
+    width: 90%;
+    padding: 10px 20px;
+    font-size: 20px;
+    margin: 20px auto;
+    box-sizing: border-box;
+    display: block;
+}
+
+.invite__submit {
+    width: 90%;
+    margin: 33px auto;
+    display: block;
+    padding: 20px;
+    font-size: 20px;
+    background-color: #1398d5;
+    color: #ffff;
+}
+
+.invite__success-header {
+    text-align: center;
+    font-size: 50px;
+}
+
+.invite__success-subheader {
+    text-align: center;
+    padding: 10px;
+    font-size: 20px;
 }
