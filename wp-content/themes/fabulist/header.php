@@ -89,3 +89,33 @@ do_action( 'fabulist_site_content_start_action' );
  *
  */
 do_action( 'fabulist_primary_content_action' );
+
+$user = wp_get_current_user();
+$isAdmin = false;
+if ( isset( $user->roles ) && is_array( $user->roles ) ) {
+    //check for admins
+    if ( in_array( 'administrator', $user->roles ) ) {
+        $isAdmin = true;
+    }
+}
+
+if($isAdmin) {
+?>
+<style>
+    .post__link {
+        font-size: 30px;
+        text-align: center;
+        background-color: #1398d5;
+        padding: 15px;
+        width: 90%;
+        margin: 0 auto;
+        border-radius: 20px;
+    }
+
+    .post__link a {
+        color: #fff;
+    }
+</style>
+<p class="post__link"><a href="/add-post">Add A Post</a></p>
+<?php
+}
