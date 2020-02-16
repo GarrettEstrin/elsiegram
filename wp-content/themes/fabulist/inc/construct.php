@@ -246,8 +246,6 @@ if ( ! function_exists( 'fabulist_site_info' ) ) :
 	                    	<?php 
 	                    	echo fabulist_santize_allow_tags( $copyright ); 
 							printf( esc_html__( ' %1$s Garrettestrin.com %2$s', 'fabulist' ), '<a href="' . esc_url( 'http://garrettestrin.com/' ) . '" target="_blank">','</a>' );
-							echo "<br>";
-							printf( esc_html__( ' %1$s login %2$s', 'fabulist' ), '<a href="' . esc_url( '/wp-login.php' ) . '">','</a>' );
 	                    	?>
 	                    </p>
 	                </div><!-- .copyright -->
