@@ -91,6 +91,7 @@ do_action( 'fabulist_site_content_start_action' );
 do_action( 'fabulist_primary_content_action' );
 
 $user = wp_get_current_user();
+$currentPage = $_SERVER['REQUEST_URI'];
 $isAdmin = false;
 if ( isset( $user->roles ) && is_array( $user->roles ) ) {
     //check for admins
@@ -99,7 +100,7 @@ if ( isset( $user->roles ) && is_array( $user->roles ) ) {
     }
 }
 
-if($isAdmin) {
+if($isAdmin && $currentPage == "/") {
 ?>
 <style>
     .post__link {
@@ -108,7 +109,7 @@ if($isAdmin) {
         background-color: #1398d5;
         padding: 15px;
         width: 90%;
-        margin: 0 auto;
+        margin: 0 auto 30px;
         border-radius: 20px;
     }
 
