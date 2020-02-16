@@ -1,5 +1,5 @@
 <?php
-
+include_once "helper-functions.php";
 add_action('wp_ajax_nopriv_submit_invitation_request', 'submit_invitation_request');
 add_action('wp_ajax_submit_invitation_request', 'submit_invitation_request');
 
@@ -25,7 +25,6 @@ function submit_elsiegram_post() {
         if ( ! function_exists( 'wp_handle_upload' ) ) {
             require_once( ABSPATH . 'wp-admin/includes/file.php' );
         }
-         
         $uploadedfile = $_FILES['image'];
         $imageNameArray = explode(".", $uploadedfile['name']);
         $uploadedfile['name'] = $imageNameArray[0] . time() . "." . $imageNameArray[1];
@@ -36,6 +35,7 @@ function submit_elsiegram_post() {
         $movefile = wp_handle_upload( $uploadedfile, $upload_overrides );
          
         if ( $movefile && ! isset( $movefile['error'] ) ) {
+            compressImage($movefile);
             // create post from image
 
             // Create post object
