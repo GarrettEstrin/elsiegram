@@ -34,7 +34,7 @@ function submitPost(event) {
     if(!imageSelected || !captionValid) {
         console.log("post not valid");
     } else {
-
+        toggleLoading();
         var xhr = new XMLHttpRequest();
         xhr.withCredentials = true;
 
@@ -56,7 +56,23 @@ function submitPost(event) {
                         "><a href="/add-post">Add Another Post</a></p>
                     </div>
                 `;
+            } else {
+                document.getElementById('content').innerHTML = `
+                <div>
+                    <p class="post__success" style="
+                        text-align: center;
+                        font-size: 40px;
+                        line-height: 1;
+                        padding: 5px;
+                    ">Oops. Something went wrong.</p>
+                        <p class="home__link" style="
+                            text-align: center;
+                            font-size: 25px;
+                        "><a href="/add-post">Try Again</a></p>
+                    </div>
+                `;
             }
+            toggleLoading();
         }
         });
 
@@ -111,6 +127,22 @@ var serialize = function (form) {
 
 };
 
+function createLoadingIndicator() {
+    let page = document.getElementById('page');
+    let containerNode = document.createElement('div');
+    containerNode.innerHTML = '<div id="jsPostLoading" class="post__loading" style="display: none"><div class="postLoadingIcon"></div></div>';
+    page.prepend(containerNode);
+}
+
+function toggleLoading() {
+    let loading = document.getElementById("jsPostLoading");
+    if(loading.style.display === "none") {
+        loading.style.display = "flex";
+    } else {
+        loading.style.display = "none";
+    }
+}
+
 //   handle showing image before upload 
 showImage(src,target);
 
@@ -119,3 +151,5 @@ caption.addEventListener("change",isCaptionValid);
 postSubmit.addEventListener('click', function(event) {
     submitPost(event);
 });
+
+createLoadingIndicator();
