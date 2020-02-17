@@ -26,6 +26,6 @@
             <button id="jsPostSubmit" class="post__submit">Submit Image</button>
         </form>
     </div>
-    <script src="<?php echo ASSET_URL?>/js/post.js"></script>
+    <script src="<?php echo ASSET_URL?>/js/post.js?v=1.1"></script>
 </body>
 </html>
