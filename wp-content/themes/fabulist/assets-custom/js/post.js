@@ -136,10 +136,14 @@ function createLoadingIndicator() {
 
 function toggleLoading() {
     let loading = document.getElementById("jsPostLoading");
+    let body = document.getElementsByTagName('body')[0];
     if(loading.style.display === "none") {
+        scrollTo(0,0);
         loading.style.display = "flex";
+        body.style.overflow = "hidden"
     } else {
         loading.style.display = "none";
+        body.style.overflow = "initial";
     }
 }
 
