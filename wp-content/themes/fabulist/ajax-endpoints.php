@@ -53,7 +53,8 @@ function submit_elsiegram_post() {
                 'post_status' => 'publish',
                 'post_type' => 'post',
                 'content' => '<!-- wp:paragraph --> <p> </p> <!-- /wp:paragraph -->',
-                'post_excerpt' => ' '
+                'post_excerpt' => ' ',
+                'post_title' => $_POST["caption"]
             );
             if($imagePostResponse) {
                 // need yyyy/mm/imagename
