@@ -362,7 +362,8 @@ $unauthenticatedPages = array(
 	"/home",
 	"/home/",
 	"/invite",
-	"/invite/"
+	"/invite/",
+	"/wp-login.php?action=lostpassword"
 
 );
 if(!in_array($currentPage, $unauthenticatedPages) && !is_user_logged_in()){
