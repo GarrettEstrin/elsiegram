@@ -354,10 +354,9 @@ if ( class_exists( 'OCDI_Plugin' ) ) {
 
 
 /* Disable WordPress Admin Bar for all users but admins. */
-  show_admin_bar(false);
+show_admin_bar(false);
   
-$currentPage = $_SERVER['REQUEST_URI'];
-$currentPage = explode("?", $currentPage)[0];
+$currentPage = explode("?", $_SERVER['REQUEST_URI'])[0];
 $unauthenticatedPages = array(
 	"/wp-login.php",
 	"/home",
