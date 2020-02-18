@@ -31,6 +31,7 @@ function validateInviteForm(event) {
     email.classList.remove('input-error');
     name.classList.remove('input-error');
     if(isEmailValid(email.value) && name.value.length > 0) {
+        toggleLoading();
         return submitForm();
     } 
     if(!isEmailValid(email.value)){
@@ -56,17 +57,23 @@ function submitForm() {
     
     xhr.addEventListener("readystatechange", function() {
       if(this.readyState === 4) {
-        console.log(JSON.parse(this.responseText));
         let response = JSON.parse(this.responseText);
         if(response.success) {
             logInviteSentEmailAddress(email.value);
-            showSuccessMessage();
+            toggleLoading();
+            return showSuccessMessage();
         } else {
             console.log('there was an error');
-            showErrorMessage();
+            toggleLoading();
+            return showErrorMessage();
         }
-      }
+      } 
     });
+
+    xhr.onerror = function(){
+        toggleLoading();
+        showErrorMessage();
+    }
     
     xhr.open("POST", "/wp-admin/admin-ajax.php?" + serialize(form));
     xhr.send();
@@ -132,3 +139,25 @@ function showErrorMessage() {
         location.reload();
     }, 5000)
 }
+
+function createLoadingIndicator() {
+    let page = document.getElementById('page');
+    let containerNode = document.createElement('div');
+    containerNode.innerHTML = '<div id="jsPostLoading" class="post__loading" style="display: none"><div class="postLoadingIcon"></div></div>';
+    page.prepend(containerNode);
+}
+
+function toggleLoading() {
+    let loading = document.getElementById("jsPostLoading");
+    let body = document.getElementsByTagName('body')[0];
+    if(loading.style.display === "none") {
+        scrollTo(0,0);
+        loading.style.display = "flex";
+        body.style.overflow = "hidden"
+    } else {
+        loading.style.display = "none";
+        body.style.overflow = "initial";
+    }
+}
+
+createLoadingIndicator();
