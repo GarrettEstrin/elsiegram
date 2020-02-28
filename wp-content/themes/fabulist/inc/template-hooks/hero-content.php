@@ -97,7 +97,7 @@ if ( ! function_exists( 'fabulist_render_hero_content_section' ) ) :
                 <div class="wrapper">
                     <?php if ( ! empty( $content['title'] ) ) : ?>
                         <div class="section-header add-separator">
-                            <h2 class="section-title"><?php echo esc_html( $content['title'] ); ?></h2>
+                            <!-- <h2 class="section-title"><?php echo esc_html( $content['title'] ); ?></h2> -->
                         </div><!-- .section-header -->
                     <?php endif; ?>
 

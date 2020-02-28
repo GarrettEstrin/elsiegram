@@ -23,9 +23,7 @@ $read_more = fabulist_theme_option( 'read_more_text', esc_html__( 'View Details'
 		<?php endif; ?>
 		<p>
 			<?php 
-				if (the_post_thumbnail_caption()) { 
-					the_post_thumbnail_caption(); 
-				}
+				construct_caption_html($post);
 			?>
 		</p>
 	</div><!-- .post-wrapper -->
