@@ -14,7 +14,7 @@
 
 get_header(); 
 ?>
-
+<link rel="stylesheet" href="<?php echo ASSET_URL?>/css/post-modal.css">
 <div class="wrapper page-section">
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
@@ -58,6 +58,8 @@ get_header();
 	</div><!-- #primary -->
 	<?php get_sidebar(); ?>
 </div><!-- .wrapper -->
+<div id="jsPostModalBG" class="post-modal__background"></div>
+<script src="<?php echo ASSET_URL?>/js/main.js?v=1.0"></script>
 
 <?php
 get_footer();

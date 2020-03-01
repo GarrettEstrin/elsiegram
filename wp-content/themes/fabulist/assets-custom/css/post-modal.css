@@ -1,0 +1,37 @@
+/* post-modal */
+
+.post-modal__background {
+    background-color: #000;
+    opacity: .7;
+    height: 100%;
+    width: 100vw;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: none;
+}
+
+.post-modal-container {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+}
+
+.post-modal__close {
+    height: 50px;
+    width: 50px;
+    background-color: #000;
+    border-radius: 50%;
+    border: 2px #fff solid;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.post-modal__flex-container {
+    display: flex;
+    align-items: center;
+    padding-top: 50px;
+    height: 100%;
+}

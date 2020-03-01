@@ -12,7 +12,7 @@ $class .= has_post_thumbnail() ? '' : ' no-post-thumbnail';
 $read_more = fabulist_theme_option( 'read_more_text', esc_html__( 'View Details', 'fabulist' ) );
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class( $class ); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class( array($class, "individual-post") ); ?>>
 	<div class="post-wrapper">
 		<?php if ( has_post_thumbnail() ) : ?>
             <div class="featured-image">
