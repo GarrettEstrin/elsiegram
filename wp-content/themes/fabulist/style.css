@@ -135,7 +135,8 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
     -o-transition: all .7s ease-in-out;
     -ms-transition: all .7s ease-in-out;
     transition: all .7s ease-in-out;
-    color: #fff;
+	color: #fff;
+	display: none;
 }
 .backtotop:hover {
 	background-color: #fe504f;
@@ -1714,7 +1715,12 @@ nav.navigation.pagination {
     width: 100%;
     margin-left: auto;
     margin-right: auto;
-    text-align: center;
+	text-align: center;
+	position: fixed;
+    background-color: #fff;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 .navigation.pagination svg {
     fill: #272B2F;
