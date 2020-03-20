@@ -69,6 +69,7 @@ let images = jQuery('img.wp-post-image');
 for(let i=0,a=images,c=a.length;i<c;i++) {
 	a[i].src = a[i].src.replace("JPG", "jpg");
 	jQuery(a[i]).parent().parent().redraw();
+	console.log(a[i].src);
 }
 </script>
 
