@@ -59,5 +59,18 @@ get_header();
 	<?php get_sidebar(); ?>
 </div><!-- .wrapper -->
 
+<script>
+jQuery.fn.redraw = function(){
+	jQuery(this).each(function(){
+    var redraw = this.offsetHeight;
+  });
+};
+let images = jQuery('img.wp-post-image');
+for(let i=0,a=images,c=a.length;i<c;i++) {
+	a[i].src = a[i].src.replace("JPG", "jpg");
+	jQuery(a[i]).parent().parent().redraw();
+}
+</script>
+
 <?php
 get_footer();
