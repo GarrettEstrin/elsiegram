@@ -267,7 +267,7 @@ function fabulist_scripts() {
 	// blocks
 	wp_enqueue_style( 'fabulist-blocks', get_template_directory_uri() . '/assets/css/blocks' . fabulist_min() . '.css' );
 
-	wp_enqueue_style( 'fabulist-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'fabulist-style', get_stylesheet_uri(), null, "5.3.3" );
 
 	// Load the html5 shiv.
 	wp_enqueue_script( 'fabulist-html5', get_template_directory_uri() . '/assets/js/html5' . fabulist_min() . '.js', array(), '3.7.3' );
