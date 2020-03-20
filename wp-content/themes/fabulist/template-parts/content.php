@@ -7,7 +7,7 @@
  * @package fabulist
  */
 
-$class = 'grid-item';
+// $class = 'grid-item';
 $class .= has_post_thumbnail() ? '' : ' no-post-thumbnail';
 $read_more = fabulist_theme_option( 'read_more_text', esc_html__( 'View Details', 'fabulist' ) );
 ?>
