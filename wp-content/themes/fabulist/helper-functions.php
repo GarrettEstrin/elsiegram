@@ -57,6 +57,7 @@ function getAuthTokenFromMicroservice() {
     $user = wp_get_current_user();
     $url = MICROSERIVCE_URL . "/user/create/token?secret=" . MICROSERVICE_SECRET . "&user_id=$user->ID";
     error_log("Microservice_url: " . $url);
+    var_dump($url); 
     
     $curl = curl_init();
 
@@ -76,11 +77,15 @@ function getAuthTokenFromMicroservice() {
 }
 
 function setAuthCookie() {
+    var_dump("running setAuthCookie");
     if(!isset($_COOKIE['elsie_gram_auth'])) {
         $response = json_decode(getAuthTokenFromMicroservice());
         error_log("Response: " . json_encode($response));
         if($response) {
             setcookie("elsie_gram_auth", $response->token, time() + (10 * 365 * 24 * 60 * 60), "/");
         }
+        var_dump($response);
+    } else {
+        var_dump("found an auth cookie");
     }
 }
