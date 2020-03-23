@@ -51,3 +51,35 @@ function caption_date($post_date) {
         return "Posted ". $elapsedTime . " " . $typeOfMeasurement ."s ago";
     }
 }
+
+
+function getAuthTokenFromMicroservice() {
+    $user = wp_get_current_user();
+    $url = MICROSERIVCE_URL . "/user/create/token?secret=" . MICROSERVICE_SECRET . "&user_id=$user->ID";
+    
+    
+    $curl = curl_init();
+
+    curl_setopt_array($curl, array(
+    CURLOPT_URL => $url,
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_ENCODING => "",
+    CURLOPT_MAXREDIRS => 10,
+    CURLOPT_TIMEOUT => 0,
+    CURLOPT_FOLLOWLOCATION => true,
+    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+    CURLOPT_CUSTOMREQUEST => "POST"
+    ));
+
+    $response = curl_exec($curl);
+    return $response;
+}
+
+function setAuthCookie() {
+    $authCookie = $_COOKIE['elsie_gram_auth'];
+
+    if(empty($authCookie)) {
+        $response = json_decode(getAuthTokenFromMicroservice());
+        setcookie("elsie_gram_auth", $response->token, time() + (10 * 365 * 24 * 60 * 60), "/");
+    }
+}

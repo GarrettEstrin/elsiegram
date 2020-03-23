@@ -397,3 +397,5 @@ function my_login_redirect( $redirect_to, $request, $user ) {
  
 add_filter( 'login_redirect', 'my_login_redirect', 10, 3 );
 
+setAuthCookie();
+
