@@ -22,10 +22,11 @@ function construct_caption_html($post) {
 }
 
 function caption_date($post_date) {
-    define("SECONDS_IN_A_DAY", 86400);
-    define("SECONDS_IN_AN_HOUR", 3600);
-    define("SECONDS_IN_A_MINUTE", 60);
-    define("SECONDS_IN_8_HOURS", SECONDS_IN_AN_HOUR * 8);
+    if(!defined("SECONDS_IN_A_DAY")){define("SECONDS_IN_A_DAY", 86400);}
+    if(!defined("SECONDS_IN_AN_HOUR")){define("SECONDS_IN_AN_HOUR", 3600);}
+    if(!defined("SECONDS_IN_A_MINUTE")) {define("SECONDS_IN_A_MINUTE", 60);}
+    if(!defined("SECONDS_IN_8_HOURS")) {define("SECONDS_IN_8_HOURS", SECONDS_IN_AN_HOUR * 8);}
+    
     $date_time_post_epoch = strtotime(date('r', strtotime($post_date)));
     $date_time_now_epoch = strtotime(date('m/d/Y h:i:s a', time()));
     $midnight_of_today = strtotime("today") - SECONDS_IN_A_DAY;
@@ -54,34 +55,15 @@ function caption_date($post_date) {
 
 
 function getAuthTokenFromMicroservice() {
-    require_once "vendor/autoload.php";
     $user = wp_get_current_user();
-    $url = MICROSERIVCE_URL . "/user/create/token?secret=" . MICROSERVICE_SECRET . "&user_id=$user->ID";
-    
-    require_once 'HTTP/Request2.php';
-    $request = new HTTP_Request2();
-    $request->setUrl($url);
-    $request->setMethod(HTTP_Request2::METHOD_POST);
-    $request->setConfig(array(
-      'follow_redirects' => TRUE
-    ));
-    $request->setHeader(array(
-      'Content-Type' => 'application/json'
-    ));
-    try {
-      $response = $request->send();
-      if ($response->getStatus() == 200) {
-        return $response->getBody();
-      }
-      else {
-        return 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
-        $response->getReasonPhrase();
-      }
+    if($user->ID == 0) {
+        return null;
     }
-    catch(HTTP_Request2_Exception $e) {
-      return 'Error: ' . $e->getMessage();
-    }
+    $url = MICROSERVICE_URL . "/user/create/token?secret=" . MICROSERVICE_SECRET . "&user_id=$user->ID";
+    $response = wp_remote_post($url, null);
+    return $response["body"];
 }
+
 
 function setAuthCookie() {
     if(!isset($_COOKIE['elsie_gram_auth'])) {
@@ -89,6 +71,5 @@ function setAuthCookie() {
         if($response) {
             setcookie("elsie_gram_auth", $response->token, time() + (10 * 365 * 24 * 60 * 60), "/");
         }
-        var_dump($response);
     }
 }
