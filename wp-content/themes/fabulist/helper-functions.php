@@ -73,7 +73,7 @@ function setAuthCookie() {
     if(!isset($_COOKIE['elsie_gram_auth'])) {
         $response = json_decode(getAuthTokenFromMicroservice());
         if($response) {
-            setcookie("elsie_gram_auth", $response->token, time() + (10 * 365 * 24 * 60 * 60), "/");
+            setcookie("elsie_gram_auth", $response->token, time() + (10 * 365 * 24 * 60 * 60), "/", ".elsiegram.com", 1, 1);
         }
     }
 }
