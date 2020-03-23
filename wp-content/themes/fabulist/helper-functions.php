@@ -62,6 +62,7 @@ function getAuthTokenFromMicroservice() {
     $url = MICROSERVICE_URL . "/user/create/token?secret=" . MICROSERVICE_SECRET . "&user_id=$user->ID";
     $response = wp_remote_post($url, null);
     if(is_wp_error($response)){
+        log_error(json_encode($response));
         return null;
     }
     return $response["body"];
