@@ -54,45 +54,41 @@ function caption_date($post_date) {
 
 
 function getAuthTokenFromMicroservice() {
+    require_once "vendor/autoload.php";
     $user = wp_get_current_user();
     $url = MICROSERIVCE_URL . "/user/create/token?secret=" . MICROSERVICE_SECRET . "&user_id=$user->ID";
-    error_log("Microservice_url: " . $url);
-    var_dump($url); 
     
-    $curl = curl_init();
-
-    curl_setopt_array($curl, array(
-    CURLOPT_URL => $url,
-    CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_ENCODING => "",
-    CURLOPT_MAXREDIRS => 10,
-    CURLOPT_TIMEOUT => 0,
-    CURLOPT_FOLLOWLOCATION => true,
-    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-    CURLOPT_CUSTOMREQUEST => "POST",
-    CURLOPT_HTTPHEADER => array(
-        "Content-Type: application/json"
-    ),
+    require_once 'HTTP/Request2.php';
+    $request = new HTTP_Request2();
+    $request->setUrl($url);
+    $request->setMethod(HTTP_Request2::METHOD_POST);
+    $request->setConfig(array(
+      'follow_redirects' => TRUE
     ));
-
-    $response = curl_exec($curl);
-    if(!response) {
-        var_dump(curl_error($curl));
+    $request->setHeader(array(
+      'Content-Type' => 'application/json'
+    ));
+    try {
+      $response = $request->send();
+      if ($response->getStatus() == 200) {
+        return $response->getBody();
+      }
+      else {
+        return 'Unexpected HTTP status: ' . $response->getStatus() . ' ' .
+        $response->getReasonPhrase();
+      }
     }
-    curl_close($curl);
-    return $response;
+    catch(HTTP_Request2_Exception $e) {
+      return 'Error: ' . $e->getMessage();
+    }
 }
 
 function setAuthCookie() {
-    var_dump("running setAuthCookie");
     if(!isset($_COOKIE['elsie_gram_auth'])) {
         $response = json_decode(getAuthTokenFromMicroservice());
-        error_log("Response: " . json_encode($response));
         if($response) {
             setcookie("elsie_gram_auth", $response->token, time() + (10 * 365 * 24 * 60 * 60), "/");
         }
         var_dump($response);
-    } else {
-        var_dump("found an auth cookie");
     }
 }
