@@ -76,6 +76,9 @@ function getAuthTokenFromMicroservice() {
     ));
 
     $response = curl_exec($curl);
+    if(!response) {
+        var_dump(curl_error($curl));
+    }
     curl_close($curl);
     return $response;
 }
