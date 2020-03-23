@@ -56,7 +56,6 @@ function caption_date($post_date) {
 function getAuthTokenFromMicroservice() {
     $user = wp_get_current_user();
     $url = MICROSERIVCE_URL . "/user/create/token?secret=" . MICROSERVICE_SECRET . "&user_id=$user->ID";
-    echo "<div class='Microservice_url: " . $url . "' /.";
     error_log("Microservice_url: " . $url);
     
     $curl = curl_init();
@@ -78,6 +77,7 @@ function getAuthTokenFromMicroservice() {
 
 function setAuthCookie() {
     $authCookie = $_COOKIE['elsie_gram_auth'];
+    error_log("AuthCookie: " . $authCookie);
     if(empty($authCookie)) {
         $response = json_decode(getAuthTokenFromMicroservice());
         error_log("Response: " . json_encode($response));
