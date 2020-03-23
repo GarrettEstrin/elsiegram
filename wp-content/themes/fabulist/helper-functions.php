@@ -80,6 +80,8 @@ function setAuthCookie() {
 
     if(empty($authCookie)) {
         $response = json_decode(getAuthTokenFromMicroservice());
-        setcookie("elsie_gram_auth", $response->token, time() + (10 * 365 * 24 * 60 * 60), "/");
+        if($response) {
+            setcookie("elsie_gram_auth", $response->token, time() + (10 * 365 * 24 * 60 * 60), "/");
+        }
     }
 }
