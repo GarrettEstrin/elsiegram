@@ -76,7 +76,6 @@ function getAuthTokenFromMicroservice() {
 }
 
 function setAuthCookie() {
-    error_log("AuthCookie: " . $authCookie);
     if(!isset($_COOKIE['elsie_gram_auth'])) {
         $response = json_decode(getAuthTokenFromMicroservice());
         error_log("Response: " . json_encode($response));
