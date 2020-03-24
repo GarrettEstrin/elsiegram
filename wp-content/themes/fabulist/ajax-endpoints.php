@@ -65,6 +65,7 @@ function submit_elsiegram_post() {
                     $metaPostResponse = add_post_meta($postResponse, "_thumbnail_id", $imagePostResponse);
                     if($metaPostResponse) {
                         $result["success"] = true;
+                        addPostToMicroservice($_POST["caption"], $movefile["url"]);
                     }
                 }
             }
@@ -76,5 +77,6 @@ function submit_elsiegram_post() {
             $result["message"] = "There was an error uploading the image";
         }
     }
+    
     return wp_send_json($result);
 }
