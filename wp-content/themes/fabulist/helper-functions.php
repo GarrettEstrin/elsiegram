@@ -77,3 +77,27 @@ function setAuthCookie() {
         }
     }
 }
+
+function addPostToMicroservice($postContent, $postImageUrl) {
+    $url = MICROSERVICE_URL . "/post/add";
+    $body = array(
+        postContent => $postContent,
+        postImageUrl => $postImageUrl
+    );
+    $cookies = array(
+        new WP_Http_Cookie(array(
+            'name' => 'elsie_gram_auth',
+            'value' => $_COOKIE['elsie_gram_auth']
+        ))
+    );
+
+    $args = Array(
+        'headers' => Array(
+            'Content-Type' => 'application/json'
+        ),
+        'body' => json_encode($body),
+        'cookies' => $cookies
+    );
+    $response = wp_remote_post($url, $args);
+    return $response;
+}
