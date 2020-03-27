@@ -1,0 +1,3 @@
+[submodule "elsiegram-ui"]
+	path = elsiegram-ui
+	url = git@github.com:GarrettEstrin/elsiegram-ui.git
