@@ -101,17 +101,19 @@ function addPostToMicroservice($postContent, $postImageUrl) {
     return $response;
 }
 function addUserToMicroservice($user) {
-    $email = $user->user_email;
-    $name = $user->user_login;
-    $password = getUsersPassword($user);
-    $url = MICROSERVICE_URL . "/user/add?email=" . $email. "&name=" . $name ."&password=" . urlencode($password) . "&secret=" . MICROSERVICE_SECRET;
+    $updatedUser = getUpdatedUser($user);
+    $email = $updatedUser->data->user_email;
+    $name = $updatedUser->data->user_login;
+    $password = $updatedUser->data->user_pass;
+    $id = $updatedUser->data->ID;
+    $url = MICROSERVICE_URL . "/user/add?id=" . $id . "&email=" . $email. "&name=" . $name ."&password=" . urlencode($password) . "&secret=" . MICROSERVICE_SECRET;
 
     $args = Array();
     $response = wp_remote_post($url, $args);
     return $response;
 }
 
-function getUsersPassword($user) {
+function getUpdatedUser($user) {
     $user = get_user_by( 'email', $user->user_email );
-    return $user->data->user_pass;
+    return $user;
 }
