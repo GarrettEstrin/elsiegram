@@ -112,8 +112,6 @@ function addUserToMicroservice($user) {
 }
 
 function getUsersPassword($user) {
-    global $wpdb;
-$query = "SELECT user_pass FROM elsiegram.wp_users WHERE user_login = '{$user->user_login}' LIMIT 1";
-    $password = $wpdb->get_row($query);
-    return $password->user_pass;
+    $user = get_user_by( 'email', $user->user_email );
+    return $user->data->user_pass;
 }
