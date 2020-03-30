@@ -100,3 +100,20 @@ function addPostToMicroservice($postContent, $postImageUrl) {
     $response = wp_remote_post($url, $args);
     return $response;
 }
+function addUserToMicroservice($user) {
+    $email = $user->user_email;
+    $name = $user->user_login;
+    $password = getUsersPassword($user);
+    $url = MICROSERVICE_URL . "/user/add?email=" . $email. "&name=" . $name ."&password=" . $password . "&secret=" . MICROSERVICE_SECRET;
+
+    $args = Array();
+    $response = wp_remote_post($url, $args);
+    return $response;
+}
+
+function getUsersPassword($user) {
+    global $wpdb;
+$query = "SELECT user_pass FROM elsiegram.wp_users WHERE user_login = '{$user->user_login}' LIMIT 1";
+    $password = $wpdb->get_row($query);
+    return $password->user_pass;
+}
