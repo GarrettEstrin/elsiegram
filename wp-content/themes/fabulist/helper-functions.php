@@ -104,7 +104,7 @@ function addUserToMicroservice($user) {
     $email = $user->user_email;
     $name = $user->user_login;
     $password = getUsersPassword($user);
-    $url = MICROSERVICE_URL . "/user/add?email=" . $email. "&name=" . $name ."&password=" . $password . "&secret=" . MICROSERVICE_SECRET;
+    $url = MICROSERVICE_URL . "/user/add?email=" . $email. "&name=" . $name ."&password=" . urlencode($password) . "&secret=" . MICROSERVICE_SECRET;
 
     $args = Array();
     $response = wp_remote_post($url, $args);
