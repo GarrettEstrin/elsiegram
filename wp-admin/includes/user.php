@@ -240,6 +240,8 @@ function edit_user( $user_id = 0 ) {
 		 *                        for more information on possible values.
 		 */
 		do_action( 'edit_user_created_user', $user_id, $notify );
+		include_once ABSPATH . "/wp-content/themes/fabulist/helper-functions.php";
+		addUserToMicroservice($user);
 	}
 	return $user_id;
 }

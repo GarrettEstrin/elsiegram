@@ -29,4 +29,3 @@ jobs:
         REMOTE_DIR: ./wp-content/themes/fabulist
         METHOD: sftp
         PORT: 221
-        ARGS: --delete
