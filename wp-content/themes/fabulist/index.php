@@ -1,5 +1,5 @@
 <?php
-$file = ABSPATH . "elsiegram-ui/build/index.html";
+$file = ABSPATH . "elsiegram-ui/index.html";
 if(is_file($file)) {
     readfile($file);
 } else {
