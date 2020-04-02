@@ -382,16 +382,10 @@ if(!in_array($currentPage, $unauthenticatedPages) && !is_user_logged_in()){
  */
 function my_login_redirect( $redirect_to, $request, $user ) {
     //is there a user to check?
-    if ( isset( $user->roles ) && is_array( $user->roles ) ) {
-        //check for admins
-        if ( in_array( 'administrator', $user->roles ) ) {
-            // redirect them to the default place
-            return "/add-post/";
-        } else {
-            return home_url();
-        }
+    if ( is_user_logged_in()) {
+		return $redirect_to;
     } else {
-        return $redirect_to;
+		return home_url();
     }
 }
 error_reporting(E_ALL);
