@@ -80,3 +80,18 @@ function submit_elsiegram_post() {
     
     return wp_send_json($result);
 }
+
+add_action('wp_ajax_nopriv_ui_login', 'ui_login');
+add_action('wp_ajax_ui_login', 'ui_login');
+function ui_login() {
+    $result = array (
+        'success' => false
+    );
+    $result["success"] = wp_login($_POST['email'], $_POST['password']);
+    if($result["success"]) {
+        $userId = email_exists($_POST["email"]);
+        wp_set_auth_cookie($userId, true);
+        setAuthCookie();
+    }
+    return wp_send_json($result);
+}

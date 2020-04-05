@@ -355,41 +355,6 @@ if ( class_exists( 'OCDI_Plugin' ) ) {
 
 /* Disable WordPress Admin Bar for all users but admins. */
 show_admin_bar(false);
-  
-$currentPage = explode("?", $_SERVER['REQUEST_URI'])[0];
-$unauthenticatedPages = array(
-	"/wp-login.php",
-	"/home",
-	"/home/",
-	"/invite",
-	"/invite/",
-	"/wp-login.php?action=lostpassword",
-	"/wp-cron.php",
-	"/wp-admin/admin-ajax.php"
-);
-if(!in_array($currentPage, $unauthenticatedPages) && !is_user_logged_in()){
-		wp_redirect("/home/");
-		die();
-}
-
-/**
- * Redirect user after successful login.
- *
- * @param string $redirect_to URL to redirect to.
- * @param string $request URL the user is coming from.
- * @param object $user Logged user's data.
- * @return string
- */
-function my_login_redirect( $redirect_to, $request, $user ) {
-    //is there a user to check?
-    if ( is_user_logged_in()) {
-		return $redirect_to;
-    } else {
-		return home_url();
-    }
-}
-error_reporting(E_ALL);
-add_filter( 'login_redirect', 'my_login_redirect', 10, 3 );
 
 setAuthCookie();
 
