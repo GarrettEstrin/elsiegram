@@ -65,7 +65,7 @@ function submit_elsiegram_post() {
                     $metaPostResponse = add_post_meta($postResponse, "_thumbnail_id", $imagePostResponse);
                     if($metaPostResponse) {
                         $result["success"] = true;
-                        addPostToMicroservice(wp_encode_emoji($_POST["caption"]), $movefile["url"]);
+                        addPostToMicroservice(urlencode($_POST["caption"]), $movefile["url"]);
                     }
                 }
             }
