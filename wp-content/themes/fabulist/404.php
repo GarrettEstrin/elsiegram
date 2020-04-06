@@ -6,7 +6,8 @@
  *
  * @package fabulist
  */
-
+header("Location: /");
+exit();
 get_header(); ?>
 
 <?php if ( has_header_image() ) : ?>
